@@ -1,7 +1,6 @@
 class_name PlayerStateRun
 extends PlayerState
 
-
 # What happen when we initialize this state
 func init() -> void:
 	pass
@@ -16,10 +15,13 @@ func exit() -> void:
 
 # What happen during the _process update in this state
 func process( _delta : float ) -> PlayerState:
+	if player.direction.x != 0:
+		return run
 	return next_state
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
+	player.velocity.x = 0.0
 	return next_state
 
 # What happen with input events update in this state	

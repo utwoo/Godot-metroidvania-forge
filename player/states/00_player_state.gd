@@ -6,6 +6,9 @@ var player : Player
 var next_state : PlayerState
 
 #region state references
+@onready var idle: PlayerStateRun = %Idle
+@onready var run: PlayerStateIdle = %Run
+#endregion
 
 # What happen when we initialize this state
 func init() -> void:
@@ -30,5 +33,3 @@ func physics_process( _delta : float ) -> PlayerState:
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	return next_state
-
-#endregion

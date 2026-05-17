@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@export var move_speed : float = 150.0
+
 #region State Machine Variables
 var states : Array[ PlayerState ]
 var current_state : PlayerState :
@@ -10,6 +12,7 @@ var previous_state : PlayerState :
 #endregion
 
 #region Standard Variables
+var deadzone : float = 0.5
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 #endregion
@@ -19,6 +22,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
+	update_direction()
 	change_state( current_state.process( delta ) )
 	pass
 
@@ -49,6 +53,7 @@ func initialize_states():
 		
 	# set first state
 	change_state( current_state )
+	$State.text = current_state.name
 	
 	pass
 	
@@ -63,8 +68,9 @@ func change_state( new_state : PlayerState ):
 		current_state.exit()
 		
 	states.push_front( new_state )
-	states.resize( 3 )
 	new_state.enter()
+	states.resize( 3 )
+	$State.text = current_state.name
 	
 func update_direction():
 	direction = Input.get_vector( "left", "right", "up", "down" )
