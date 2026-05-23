@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
-	change_state( current_state.physics_process( delta ) )
 	move_and_slide()
+	change_state( current_state.physics_process( delta ) )
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:

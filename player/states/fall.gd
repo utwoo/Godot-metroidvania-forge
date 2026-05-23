@@ -1,16 +1,5 @@
-@icon("res://assets/icons/state.svg")
-class_name PlayerState
-extends Node
-
-var player : Player
-var next_state : PlayerState
-
-#region state references
-@onready var idle: PlayerStateRun = %Idle
-@onready var run: PlayerStateIdle = %Run
-@onready var jump: PlayerStateJump = %Jump
-@onready var fall: PlayerStateFall = %Fall
-#endregion
+class_name PlayerStateFall
+extends PlayerState
 
 # What happen when we initialize this state
 func init() -> void:
@@ -30,6 +19,10 @@ func process( _delta : float ) -> PlayerState:
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
+	if player.is_on_floor():
+		return idle
+		
+	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
 
 # What happen with input events update in this state	

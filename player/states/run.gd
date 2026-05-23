@@ -21,9 +21,13 @@ func process( _delta : float ) -> PlayerState:
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
-	player.velocity.x = player.direction.x * player.move_speed  
+	player.velocity.x = player.direction.x * player.move_speed 
+	if not player.is_on_floor():
+		return fall 
 	return next_state
 
-# What happen with input events update in this state	
+# What happen with input events update in this state
 func handle_input( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed("jump"):
+		return jump
 	return next_state
