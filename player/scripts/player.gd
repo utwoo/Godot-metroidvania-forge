@@ -15,6 +15,7 @@ var previous_state : PlayerState :
 var deadzone : float = 0.5
 var direction : Vector2 = Vector2.ZERO
 var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity_mulitplier : float = 1.0
 #endregion
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
+	velocity.y += gravity * gravity_mulitplier * delta
 	move_and_slide()
 	change_state( current_state.physics_process( delta ) )
 	pass
