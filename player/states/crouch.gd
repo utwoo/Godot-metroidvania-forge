@@ -1,5 +1,9 @@
-class_name PlayerStateRun
+class_name PlayerStateCrouch
 extends PlayerState
+
+@export var deceleration_rate : float = 10.0
+
+@onready var sprite: Sprite2D = $Sprite2D
 
 # What happen when we initialize this state
 func init() -> void:
@@ -7,23 +11,29 @@ func init() -> void:
 	
 # What happen when the player enters this state
 func enter() -> void:
+	player.collision_stand.disabled = true
+	player.collision_crouch.disabled = false
+	player.sprite.scale.y = 0.652
+	player.sprite.position.y = -15
 	pass
 
 # What happen when the player exits this state
 func exit() -> void:
+	player.collision_stand.disabled = false
+	player.collision_crouch.disabled = true
+	player.sprite.scale.y = 1.0
+	player.sprite.position.y = -23
 	pass
 
 # What happen during the _process update in this state
 func process( _delta : float ) -> PlayerState:
-	if player.direction.x != 0:
-		return run
-	elif player.direction.y > 0:
-		return crouch
+	if player.direction.y <= 0:
+		return idle
 	return next_state
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
-	player.velocity.x = 0.0
+	player.velocity.x -= player.velocity.x * deceleration_rate * _delta
 	if not player.is_on_floor():
 		return fall
 	return next_state
@@ -31,5 +41,8 @@ func physics_process( _delta : float ) -> PlayerState:
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("jump"):
+		if player.one_way_platform_ray_cast.is_colliding():
+			player.position.y += 4.0
+			return fall
 		return jump
 	return next_state

@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 @export var move_speed : float = 150.0
 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_stand: CollisionShape2D = $CollisionStand
+@onready var collision_crouch: CollisionShape2D = $CollisionCrouch
+@onready var one_way_platform_ray_cast: RayCast2D = $OneWayPlatformRayCast
+
 #region State Machine Variables
 var states : Array[ PlayerState ]
 var current_state : PlayerState :

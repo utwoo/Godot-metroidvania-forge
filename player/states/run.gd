@@ -17,6 +17,8 @@ func exit() -> void:
 func process( _delta : float ) -> PlayerState:
 	if player.direction.x == 0:
 		return idle
+	elif player.direction.y > 0:
+		return crouch
 	return next_state
 
 # What happen during the _physics_process update in this state

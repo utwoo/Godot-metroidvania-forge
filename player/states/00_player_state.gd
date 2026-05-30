@@ -10,6 +10,7 @@ var next_state : PlayerState
 @onready var run: PlayerStateIdle = %Run
 @onready var jump: PlayerStateJump = %Jump
 @onready var fall: PlayerStateFall = %Fall
+@onready var crouch: PlayerStateCrouch = %Crouch
 #endregion
 
 # What happen when we initialize this state
