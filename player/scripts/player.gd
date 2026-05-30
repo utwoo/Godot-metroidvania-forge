@@ -6,7 +6,8 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
-@onready var one_way_platform_ray_cast: RayCast2D = $OneWayPlatformRayCast
+@onready var one_way_platform_shape_cast: ShapeCast2D = $OneWayPlatformShapeCast
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #region State Machine Variables
 var states : Array[ PlayerState ]
@@ -79,6 +80,13 @@ func change_state( new_state : PlayerState ):
 	$State.text = current_state.name
 	
 func update_direction():
+	var previous_direction : Vector2 = direction
 	direction = Input.get_vector( "left", "right", "up", "down" )
+	
+	if direction.x != previous_direction.x:
+		if direction.x > 0:
+			sprite.flip_h = false
+		elif direction.x < 0:
+			sprite.flip_h = true
 	pass
 	

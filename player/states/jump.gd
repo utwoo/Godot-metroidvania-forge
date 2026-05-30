@@ -9,6 +9,7 @@ func init() -> void:
 	
 # What happen when the player enters this state
 func enter() -> void:
+	player.animation_player.play("jump")
 	player.velocity.y = -jump_velocity
 	pass
 

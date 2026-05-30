@@ -7,6 +7,7 @@ func init() -> void:
 	
 # What happen when the player enters this state
 func enter() -> void:
+	player.animation_player.play("idle")
 	pass
 
 # What happen when the player exits this state

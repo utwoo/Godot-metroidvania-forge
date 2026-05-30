@@ -11,18 +11,15 @@ func init() -> void:
 	
 # What happen when the player enters this state
 func enter() -> void:
+	player.animation_player.play("crouch")
 	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false
-	player.sprite.scale.y = 0.652
-	player.sprite.position.y = -15
 	pass
 
 # What happen when the player exits this state
 func exit() -> void:
 	player.collision_stand.disabled = false
 	player.collision_crouch.disabled = true
-	player.sprite.scale.y = 1.0
-	player.sprite.position.y = -23
 	pass
 
 # What happen during the _process update in this state
@@ -41,7 +38,8 @@ func physics_process( _delta : float ) -> PlayerState:
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("jump"):
-		if player.one_way_platform_ray_cast.is_colliding():
+		player.one_way_platform_shape_cast.force_shapecast_update()
+		if player.one_way_platform_shape_cast.is_colliding():
 			player.position.y += 4.0
 			return fall
 		return jump
