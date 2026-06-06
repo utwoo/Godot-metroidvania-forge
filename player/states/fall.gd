@@ -33,7 +33,7 @@ func process( _delta : float ) -> PlayerState:
 	coyote_timer -= _delta
 	jump_buffer_timer -= _delta
 	set_jump_frame()
-	return next_state
+	return null
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
@@ -43,7 +43,7 @@ func physics_process( _delta : float ) -> PlayerState:
 		return idle
 		
 	player.velocity.x = player.direction.x * player.move_speed
-	return next_state
+	return null
 
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
@@ -53,7 +53,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 		else:
 			jump_buffer_timer = jump_buffer_time
 
-	return next_state
+	return null
 	
 func set_jump_frame():
 	var frame : float = remap( player.velocity.y, 0.0, player.max_fall_velocity, 0.5, 1.0 )

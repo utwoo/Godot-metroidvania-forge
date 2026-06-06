@@ -20,17 +20,17 @@ func process( _delta : float ) -> PlayerState:
 		return run
 	elif player.direction.y > 0:
 		return crouch
-	return next_state
+	return null
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
 	player.velocity.x = 0.0
 	if not player.is_on_floor():
 		return fall
-	return next_state
+	return null
 
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("jump"):
 		return jump
-	return next_state
+	return null

@@ -26,14 +26,14 @@ func exit() -> void:
 func process( _delta : float ) -> PlayerState:
 	if player.direction.y <= 0:
 		return idle
-	return next_state
+	return null
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
 	player.velocity.x -= player.velocity.x * deceleration_rate * _delta
 	if not player.is_on_floor():
 		return fall
-	return next_state
+	return null
 
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
@@ -43,4 +43,4 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 			player.position.y += 4.0
 			return fall
 		return jump
-	return next_state
+	return null

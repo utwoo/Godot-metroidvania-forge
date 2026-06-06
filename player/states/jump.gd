@@ -21,7 +21,7 @@ func exit() -> void:
 # What happen during the _process update in this state
 func process( _delta : float ) -> PlayerState:
 	set_jump_frame()
-	return next_state
+	return null
 
 # What happen during the _physics_process update in this state
 func physics_process( _delta : float ) -> PlayerState:
@@ -31,13 +31,13 @@ func physics_process( _delta : float ) -> PlayerState:
 		return fall
 		
 	player.velocity.x = player.direction.x * player.move_speed
-	return next_state
+	return null
 
 # What happen with input events update in this state	
 func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_released("jump"):
 		player.velocity.y *= 0.5
-	return next_state
+	return null
 	
 func set_jump_frame():
 	var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
