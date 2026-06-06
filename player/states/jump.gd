@@ -10,6 +10,7 @@ func init() -> void:
 # What happen when the player enters this state
 func enter() -> void:
 	player.animation_player.play("jump")
+	player.animation_player.pause()
 	player.velocity.y = -jump_velocity
 	pass
 
@@ -19,6 +20,7 @@ func exit() -> void:
 
 # What happen during the _process update in this state
 func process( _delta : float ) -> PlayerState:
+	set_jump_frame()
 	return next_state
 
 # What happen during the _physics_process update in this state
@@ -36,3 +38,8 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_released("jump"):
 		player.velocity.y *= 0.5
 	return next_state
+	
+func set_jump_frame():
+	var frame : float = remap( player.velocity.y, -jump_velocity, 0.0, 0.0, 0.5 )
+	player.animation_player.seek( frame, true )
+	pass

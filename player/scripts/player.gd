@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var move_speed : float = 150.0
+@export var max_fall_velocity : float = 600.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
@@ -34,7 +35,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	velocity.y += gravity * gravity_mulitplier * delta
+	var fall_velocity : float = velocity.y + gravity * gravity_mulitplier * delta
+	velocity.y = clampf( fall_velocity, -max_fall_velocity, max_fall_velocity )
 	move_and_slide()
 	change_state( current_state.physics_process( delta ) )
 	pass
