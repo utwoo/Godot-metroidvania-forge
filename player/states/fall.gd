@@ -5,8 +5,8 @@ extends PlayerState
 @export var jump_buffer_time : float = 0.1
 @export var fall_gravity_mulitplier : float = 1.165
 
-var coyote_timer : float = 0
-var jump_buffer_timer : float = 0
+var coyote_timer : float = 0.0
+var jump_buffer_timer : float = 0.0
 
 # What happen when we initialize this state
 func init() -> void:
@@ -21,6 +21,8 @@ func enter() -> void:
 	# set coyote time
 	if player.previous_state != jump:
 		coyote_timer = coyote_time
+	# reset 	jump buffer time
+	jump_buffer_timer = 0.0
 	pass
 
 # What happen when the player exits this state

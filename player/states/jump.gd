@@ -12,6 +12,10 @@ func enter() -> void:
 	player.animation_player.play("jump")
 	player.animation_player.pause()
 	player.velocity.y = -jump_velocity
+	
+	# deal with jump buffer
+	if player.previous_state == fall and not Input.is_action_pressed( "jump" ):
+		player.velocity.y *= 0.5
 	pass
 
 # What happen when the player exits this state
