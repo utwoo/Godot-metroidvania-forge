@@ -3,8 +3,6 @@ extends PlayerState
 
 @export var deceleration_rate : float = 10.0
 
-@onready var sprite: Sprite2D = $Sprite2D
-
 # What happen when we initialize this state
 func init() -> void:
 	pass

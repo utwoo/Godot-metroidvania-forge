@@ -173,3 +173,6 @@ collision_mask = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=539124790]
 libraries/ = SubResource("AnimationLibrary_8t03j")
 autoplay = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=479842276]
+position = Vector2(0, -38)
