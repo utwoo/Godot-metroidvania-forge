@@ -107,14 +107,16 @@ _data = {
 &"run": SubResource("Animation_8t03j")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1688717268]
-collision_layer = 0
+[node name="Player" type="CharacterBody2D" unique_id=1688717268 groups=["Player"]]
+z_index = 1
+collision_layer = 16
 collision_mask = 3
 floor_constant_speed = true
 floor_snap_length = 2.0
 script = ExtResource("1_oul6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2112804888]
+z_index = 1
 position = Vector2(0, -39)
 texture = ExtResource("2_boad6")
 hframes = 16
@@ -156,9 +158,9 @@ script = ExtResource("6_g6k8r")
 
 [node name="State" type="Label" parent="." unique_id=929818177]
 offset_left = -27.0
-offset_top = -64.0
+offset_top = -70.0
 offset_right = 27.0
-offset_bottom = -48.0
+offset_bottom = -54.0
 theme_override_font_sizes/font_size = 11
 text = "state"
 horizontal_alignment = 1

@@ -27,8 +27,8 @@ func _ready() -> void:
 func _draw() -> void:
 	if Engine.is_editor_hint():
 		var r := Rect2( Vector2.ZERO, Vector2( width, height ) )
-		draw_rect( r, Color( 0.0, 0.45, 0.6 ), false, 3 )
-		draw_rect( r, Color( 0.0, 0.75, 1.0 ), false, 1 )
+		draw_rect( r, Color( 0.0, 0.45, 1.0, 0.6 ), false, 3 )
+		draw_rect( r, Color( 0.0, 0.75, 1.0, 1.0 ), false, 1 )
 	pass
 	
 func _on_width_changed( new_width : int ):

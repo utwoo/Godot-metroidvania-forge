@@ -1,0 +1,26 @@
+[gd_scene format=4 uid="uid://cc0jawhlxy1go"]
+
+[ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_5wgas"]
+[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="2_uqe0m"]
+[ext_resource type="Script" uid="uid://dncm1bg2vgv7o" path="res://general/scripts/level_bounds.gd" id="3_epyyu"]
+[ext_resource type="PackedScene" uid="uid://en7e2vtj72wn" path="res://general/scenes/LevelTransition.tscn" id="4_s2tn3"]
+
+[node name="02" type="Node2D" unique_id=1989581114]
+
+[node name="Player" parent="." unique_id=1688717268 instance=ExtResource("2_uqe0m")]
+position = Vector2(40, 194)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1677566742]
+tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAAAAAgAAAABAAEAAAAAAAkAAAABAAIAAAABAAcAAAACAAAAAAABAAgAAAACAAEAAAABAAkAAAACAAIAAAACAAcAAAADAAAAAAACAAgAAAADAAEAAAACAAkAAAADAAIAAAADAAcAAAABAAAAAAADAAgAAAABAAEAAAADAAkAAAABAAIAAAAEAAcAAAACAAAAAAAEAAgAAAACAAEAAAAEAAkAAAACAAIAAAAFAAcAAAADAAAAAAAFAAgAAAADAAEAAAAFAAkAAAADAAIAAAAGAAcAAAABAAAAAAAGAAgAAAABAAEAAAAGAAkAAAABAAIAAAAHAAcAAAACAAAAAAAHAAgAAAACAAEAAAAHAAkAAAACAAIAAAAIAAcAAAADAAAAAAAIAAgAAAADAAEAAAAIAAkAAAADAAIAAAAJAAcAAAABAAAAAAAJAAgAAAABAAEAAAAJAAkAAAABAAIAAAANAAcAAAACAAAAAAANAAgAAAACAAEAAAANAAkAAAACAAIAAAAOAAcAAAADAAAAAAAOAAgAAAADAAEAAAAOAAkAAAADAAIAAAADAAQAAAAQAAYAAAAEAAQAAAARAAYAAAAFAAQAAAASAAYAAAAGAAQAAAATAAYAAAAJAAIAAAAQAAYAAAAKAAIAAAARAAYAAAALAAIAAAASAAYAAAAMAAIAAAATAAYAAAAMAAcAAAACAAAAAAAMAAgAAAACAAEAAAAMAAkAAAACAAIAAAAPAAcAAAACAAAAAAAPAAgAAAACAAEAAAAPAAkAAAACAAQAAAA=")
+tile_set = ExtResource("1_5wgas")
+
+[node name="LevelBounds" type="Node2D" parent="." unique_id=1575164860]
+z_index = 256
+position = Vector2(0, 16)
+script = ExtResource("3_epyyu")
+metadata/_custom_type_script = "uid://dncm1bg2vgv7o"
+
+[node name="LevelTransition" parent="." unique_id=929905900 instance=ExtResource("4_s2tn3")]
+position = Vector2(-1, 224)
+size = 7
+target_level = "uid://cilmdg5tpbdkk"
