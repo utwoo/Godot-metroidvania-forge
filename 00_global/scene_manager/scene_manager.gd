@@ -15,13 +15,13 @@ func _ready() -> void:
 func transition_scene( target_level : String, target_area : String, player_offset : Vector2, direction : String ):
 	
 	get_tree().paused = true
-	
-	var fade_position := get_fade_position(direction)
-	
+		
 	load_scene_started.emit()
 	
 	# fade out
 	fade.show()
+	
+	var fade_position := get_fade_position(direction)
 	await fade_screen( fade_position, Vector2.ZERO )
 	
 	get_tree().change_scene_to_file( target_level )
