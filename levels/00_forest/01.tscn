@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dncm1bg2vgv7o" path="res://general/scripts/level_bounds.gd" id="3_1pu88"]
 [ext_resource type="PackedScene" uid="uid://en7e2vtj72wn" path="res://general/scenes/LevelTransition.tscn" id="4_vhcel"]
 [ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="5_qmxb0"]
+[ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_chwhs"]
 
 [sub_resource type="Gradient" id="Gradient_vhcel"]
 colors = PackedColorArray(0.518, 0.74, 0.703, 0.5019608, 1, 1, 1, 0)
@@ -16,10 +17,14 @@ height = 256
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0.0028490028)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iwh36"]
+blend_mode = 1
+light_mode = 1
+
 [node name="01" type="Node2D" unique_id=431362019]
 
 [node name="Player" parent="." unique_id=1688717268 instance=ExtResource("2_pu3y4")]
-position = Vector2(626, 253)
+position = Vector2(634, 262)
 
 [node name="ParallaxSky" type="Parallax2D" parent="." unique_id=411442888]
 scroll_scale = Vector2(0, 0)
@@ -95,3 +100,46 @@ position = Vector2(494, 199)
 
 [node name="Plant4" parent="Node2D" unique_id=715171870 instance=ExtResource("5_qmxb0")]
 position = Vector2(260, 178)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1741137042]
+visible = false
+position = Vector2(237.00003, -27.999992)
+rotation = 0.2617994
+color = Color(0.8902065, 0.7786744, 0.45681217, 1)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("6_chwhs")
+offset = Vector2(0, 256)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=925704813]
+rotation = 0.26179937
+scale = Vector2(0.6726262, 0.99999994)
+scroll_scale = Vector2(1.1, 1)
+scroll_offset = Vector2(316, -43)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=479988473]
+modulate = Color(1.1638972, 0.9482312, 0.3551502, 0.49019608)
+z_index = 3
+material = SubResource("CanvasItemMaterial_iwh36")
+position = Vector2(5.9227753, -8.314392)
+scale = Vector2(0.9999998, 0.9999999)
+texture = ExtResource("6_chwhs")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=1531129034]
+modulate = Color(1.1638972, 0.9482312, 0.3551502, 0.49019608)
+z_index = 3
+material = SubResource("CanvasItemMaterial_iwh36")
+position = Vector2(281.67227, -42.483486)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_chwhs")
+offset = Vector2(0, 256)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D" unique_id=1521731391]
+modulate = Color(1.1638972, 0.9482312, 0.3551502, 0.49019608)
+z_index = 3
+material = SubResource("CanvasItemMaterial_iwh36")
+position = Vector2(533.4415, -98.21253)
+scale = Vector2(0.80306524, 0.99999994)
+texture = ExtResource("6_chwhs")
+offset = Vector2(0, 256)
