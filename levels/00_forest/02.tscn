@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://cc0jawhlxy1go"]
 
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_5wgas"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="2_uqe0m"]
 [ext_resource type="Script" uid="uid://dncm1bg2vgv7o" path="res://general/scripts/level_bounds.gd" id="3_epyyu"]
 [ext_resource type="PackedScene" uid="uid://en7e2vtj72wn" path="res://general/scenes/LevelTransition.tscn" id="4_s2tn3"]
 [ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="5_o5ap7"]
+[ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="5_tfgdr"]
 
 [node name="02" type="Node2D" unique_id=1989581114]
 
@@ -13,9 +13,6 @@ position = Vector2(254, 148)
 color = Color(0.5529412, 0.27058825, 0.27058825, 1)
 energy = 0.5
 blend_mode = 2
-
-[node name="Player" parent="." unique_id=1688717268 instance=ExtResource("2_uqe0m")]
-position = Vector2(44, 225)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1677566742]
 tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAAAAAgAAAABAAEAAAAAAAkAAAABAAIAAAABAAcAAAACAAAAAAABAAgAAAACAAEAAAABAAkAAAACAAIAAAACAAcAAAADAAAAAAACAAgAAAADAAEAAAACAAkAAAADAAIAAAADAAcAAAABAAAAAAADAAgAAAABAAEAAAADAAkAAAABAAIAAAAEAAcAAAACAAAAAAAEAAgAAAACAAEAAAAEAAkAAAACAAIAAAAFAAcAAAADAAAAAAAFAAgAAAADAAEAAAAFAAkAAAADAAIAAAAGAAcAAAABAAAAAAAGAAgAAAABAAEAAAAGAAkAAAABAAIAAAAHAAcAAAACAAAAAAAHAAgAAAACAAEAAAAHAAkAAAACAAIAAAAIAAcAAAADAAAAAAAIAAgAAAADAAEAAAAIAAkAAAADAAIAAAAJAAcAAAABAAAAAAAJAAgAAAABAAEAAAAJAAkAAAABAAIAAAANAAcAAAACAAAAAAANAAgAAAACAAEAAAANAAkAAAACAAIAAAAOAAcAAAADAAAAAAAOAAgAAAADAAEAAAAOAAkAAAADAAIAAAADAAQAAAAQAAYAAAAEAAQAAAARAAYAAAAFAAQAAAASAAYAAAAGAAQAAAATAAYAAAAJAAIAAAAQAAYAAAAKAAIAAAARAAYAAAALAAIAAAASAAYAAAAMAAIAAAATAAYAAAAMAAcAAAACAAAAAAAMAAgAAAACAAEAAAAMAAkAAAACAAIAAAAPAAcAAAACAAAAAAAPAAgAAAACAAEAAAAPAAkAAAACAAQAAAA=")
@@ -39,3 +36,6 @@ position = Vector2(302, 229)
 
 [node name="Torch2" parent="Node2D" unique_id=762189708 instance=ExtResource("5_o5ap7")]
 position = Vector2(402, 230)
+
+[node name="PlayerSpawn" parent="." unique_id=912170393 instance=ExtResource("5_tfgdr")]
+position = Vector2(76, 223)
