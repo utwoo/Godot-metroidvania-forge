@@ -223,4 +223,4 @@ randomness = 0.85
 process_material = SubResource("ParticleProcessMaterial_uh0r3")
 
 [node name="PlayerSpawn" parent="." unique_id=912170393 instance=ExtResource("7_vdj2u")]
-position = Vector2(79, 262)
+position = Vector2(80, 260)

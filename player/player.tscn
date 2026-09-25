@@ -177,4 +177,5 @@ libraries/ = SubResource("AnimationLibrary_8t03j")
 autoplay = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=479842276]
+process_mode = 3
 position = Vector2(0, -38)

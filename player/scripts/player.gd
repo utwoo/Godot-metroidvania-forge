@@ -18,6 +18,11 @@ var previous_state : PlayerState :
 	get : return states[ 1 ]
 #endregion
 
+#region Player Status
+var hp : int = 3
+var max_hp : int = 10
+#endregion
+
 #region Standard Variables
 var deadzone : float = 0.5
 var direction : Vector2 = Vector2.ZERO

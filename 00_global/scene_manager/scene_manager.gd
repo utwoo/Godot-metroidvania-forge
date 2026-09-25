@@ -3,8 +3,11 @@ extends Node
 signal load_scene_started
 signal new_scene_ready( target_name : String, offset : Vector2 )
 signal load_scene_finished
+signal scene_entered( scene_uid : String )
 
 @onready var fade: Control = $fade
+
+var current_scene_uid : String
 
 func _ready() -> void:
 	fade.hide()
@@ -12,7 +15,7 @@ func _ready() -> void:
 	load_scene_finished.emit()
 	pass
 
-func transition_scene( target_level : String, target_area : String, player_offset : Vector2, direction : String ):
+func transition_scene( target_scene : String, target_area : String, player_offset : Vector2, direction : String ):
 	
 	get_tree().paused = true
 		
@@ -24,7 +27,10 @@ func transition_scene( target_level : String, target_area : String, player_offse
 	var fade_position := get_fade_position(direction)
 	await fade_screen( fade_position, Vector2.ZERO )
 	
-	get_tree().change_scene_to_file( target_level )
+	get_tree().change_scene_to_file( target_scene )
+	
+	current_scene_uid = ResourceUID.path_to_uid( target_scene )
+	scene_entered.emit( current_scene_uid )
 	
 	await get_tree().scene_changed
 	

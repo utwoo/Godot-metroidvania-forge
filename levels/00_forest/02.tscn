@@ -38,4 +38,4 @@ position = Vector2(302, 229)
 position = Vector2(402, 230)
 
 [node name="PlayerSpawn" parent="." unique_id=912170393 instance=ExtResource("5_tfgdr")]
-position = Vector2(76, 223)
+position = Vector2(56, 231)
